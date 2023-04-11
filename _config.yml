@@ -30,7 +30,7 @@ twitter_username:
 github_username:  cscaudill
 
 # Build settings
-theme: minima
+remote-theme: al-folio
 plugins:
   - jekyll-feed
 
