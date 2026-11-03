@@ -9,6 +9,34 @@
   var nav = document.getElementById("site-nav");
   var navList = nav.querySelector("ul");
 
+  /* ---------- Theme toggle (dark by default; the choice is remembered) ---------- */
+  var themeToggle = document.querySelector(".theme-toggle");
+  var themeColor = document.querySelector('meta[name="theme-color"]');
+
+  function syncThemeToggle() {
+    var light = root.getAttribute("data-theme") === "light";
+    themeToggle.setAttribute("aria-pressed", String(light));
+    themeToggle.title = light ? "Switch to dark theme" : "Switch to light theme";
+    if (themeColor) themeColor.setAttribute("content", light ? "#f5f6f8" : "#0f1a2a");
+  }
+
+  if (themeToggle) {
+    syncThemeToggle();
+    themeToggle.addEventListener("click", function () {
+      var light = root.getAttribute("data-theme") !== "light";
+      root.classList.add("theme-switching");
+      if (light) root.setAttribute("data-theme", "light");
+      else root.removeAttribute("data-theme");
+      try {
+        localStorage.setItem("theme", light ? "light" : "dark");
+      } catch (e) {}
+      syncThemeToggle();
+      window.setTimeout(function () {
+        root.classList.remove("theme-switching");
+      }, 400);
+    });
+  }
+
   /* ---------- Mobile menu ---------- */
   function setOpen(open) {
     toggle.setAttribute("aria-expanded", String(open));

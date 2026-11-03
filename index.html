@@ -3,23 +3,33 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Chris Caudill, Senior Machine Learning Engineer</title>
-  <meta name="description" content="Chris Caudill is a senior machine learning engineer at Snowflake who builds ML and LLM systems for healthcare and life sciences, from retrieval-augmented generation to production ML platforms.">
+  <title>Chris Caudill, Senior AI/ML Architect</title>
+  <meta name="description" content="Chris Caudill is a Senior AI/ML Architect at Snowflake with more than a decade of experience across data science, machine learning, and AI, focused on healthcare and life sciences.">
   <link rel="canonical" href="https://cscaudill.github.io/">
   <meta name="theme-color" content="#0f1a2a">
-  <meta name="color-scheme" content="dark">
+  <meta name="color-scheme" content="dark light">
 
   <meta property="og:type" content="profile">
-  <meta property="og:title" content="Chris Caudill, Senior Machine Learning Engineer">
-  <meta property="og:description" content="ML and LLM systems for healthcare and life sciences, built where the data already lives.">
+  <meta property="og:title" content="Chris Caudill, Senior AI/ML Architect">
+  <meta property="og:description" content="Senior AI/ML Architect at Snowflake. More than a decade across data science, machine learning, and AI.">
   <meta property="og:url" content="https://cscaudill.github.io/">
   <meta property="og:image" content="https://cscaudill.github.io/assets/img/og.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Chris Caudill, Senior Machine Learning Engineer">
+  <meta property="og:image:alt" content="Chris Caudill, Senior AI/ML Architect">
   <meta name="twitter:card" content="summary_large_image">
 
-  <script>document.documentElement.classList.add("js");</script>
+  <script>
+    (function () {
+      var d = document.documentElement, t = null;
+      d.classList.add("js");
+      try { t = localStorage.getItem("theme"); } catch (e) {}
+      if (t === "light") {
+        d.setAttribute("data-theme", "light");
+        document.querySelector('meta[name="theme-color"]').setAttribute("content", "#f5f6f8");
+      }
+    })();
+  </script>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
   <link rel="preload" href="assets/fonts/archivo.woff2" as="font" type="font/woff2" crossorigin>
@@ -31,13 +41,13 @@
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Chris Caudill",
-    "jobTitle": "Senior Machine Learning Engineer",
+    "jobTitle": "Senior AI/ML Architect",
     "worksFor": { "@type": "Organization", "name": "Snowflake" },
     "url": "https://cscaudill.github.io/",
     "image": "https://cscaudill.github.io/assets/img/portrait.jpg",
     "email": "mailto:cscaudill3@gmail.com",
     "sameAs": ["https://github.com/cscaudill"],
-    "knowsAbout": ["Machine learning", "Large language models", "Retrieval-augmented generation", "Snowflake", "AWS", "Healthcare and life sciences data", "MLOps"]
+    "knowsAbout": ["Data science", "Machine learning", "Artificial intelligence", "Large language models", "Retrieval-augmented generation", "Snowflake", "AWS", "Healthcare and life sciences data", "MLOps"]
   }
   </script>
 </head>
@@ -61,6 +71,11 @@
           <li><a class="button button--small" href="#contact">Contact</a></li>
         </ul>
       </nav>
+      <button class="theme-toggle" type="button" aria-pressed="false" title="Switch to light theme">
+        <span class="visually-hidden">Light theme</span>
+        <svg class="theme-toggle__sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4.2" fill="currentColor"/><g stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></g></svg>
+        <svg class="theme-toggle__moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M20.2 14.6A8.5 8.5 0 0 1 9.4 3.8a8.5 8.5 0 1 0 10.8 10.8Z"/></svg>
+      </button>
     </div>
     <div class="scroll-progress" aria-hidden="true"></div>
   </header>
@@ -70,9 +85,9 @@
       <div class="wrap hero__grid">
         <div class="hero__text">
           <h1 id="hero-title" class="hero__name"><span class="line"><span>Chris</span></span> <span class="line"><span>Caudill</span></span></h1>
-          <p class="hero__role">Senior Machine Learning Engineer at Snowflake</p>
-          <p class="hero__lead">I build machine learning and LLM systems that run where the data already lives, with a focus on healthcare and life sciences, where privacy isn&rsquo;t optional and &ldquo;it works on my laptop&rdquo; isn&rsquo;t good enough.</p>
-          <p class="hero__path">More than a decade in data, from ExxonMobil to AWS to Snowflake.</p>
+          <p class="hero__role">Senior AI/ML Architect at Snowflake</p>
+          <p class="hero__lead">I design and build machine learning and AI systems on enterprise data platforms. Most of my recent work is in healthcare and life sciences.</p>
+          <p class="hero__path">I have more than a decade of experience across data science, machine learning, and AI, from statistical modeling to production ML platforms and LLM applications, at ExxonMobil, AWS, and Snowflake.</p>
           <div class="hero__actions">
             <a class="button" href="mailto:cscaudill3@gmail.com">Email me</a>
             <a class="button button--quiet" href="#work">See selected work</a>
@@ -100,18 +115,18 @@
           <div class="focus">
             <div class="focus__item" data-reveal>
               <h3>Healthcare and life sciences ML</h3>
-              <p>Models for clinical and operational data, designed around privacy from the start: PHI-aware profiling, small-cell suppression, and synthetic data when the real thing can&rsquo;t leave the building.</p>
+              <p>Machine learning on clinical and operational data with strict privacy requirements, including PHI-aware data profiling, small-cell suppression, and synthetic data for development when real data isn&rsquo;t accessible.</p>
             </div>
             <div class="focus__item" data-reveal>
               <h3>LLM and RAG applications</h3>
-              <p>Retrieval-augmented apps that are measured, not eyeballed. Retrieval quality, grounding, and evaluation are part of the build, not an afterthought.</p>
+              <p>Retrieval-augmented generation applications with evaluation built in from the start, covering retrieval quality, grounding, and answer accuracy.</p>
             </div>
             <div class="focus__item" data-reveal>
               <h3>ML platforms and infrastructure</h3>
-              <p>The plumbing that gets models into production and keeps them healthy there: pipelines, CI/CD, monitoring, and checks that run after every deploy.</p>
+              <p>Pipelines, CI/CD, monitoring, and post-deployment checks that take models into production and keep them reliable.</p>
             </div>
           </div>
-          <p class="aside" data-reveal>I also teach. Explaining hard ideas plainly to analysts and engineers has been part of my work for years, and it&rsquo;s still one of my favorite parts.</p>
+          <p class="aside" data-reveal>I also teach data science and machine learning to analysts and engineers.</p>
         </div>
       </div>
     </section>
@@ -157,18 +172,18 @@
           <ol class="timeline">
             <li class="timeline__item" data-reveal>
               <h3>Snowflake</h3>
-              <p class="timeline__role">Senior Machine Learning Engineer</p>
-              <p>Building ML and generative AI solutions on Snowflake, with Cortex AI and Snowflake-native ML, for healthcare and life sciences use cases. I speak and write about running production ML on the platform.</p>
+              <p class="timeline__role">Senior AI/ML Architect</p>
+              <p>Design ML and generative AI solutions on Snowflake, using Cortex AI and Snowflake-native ML, primarily for healthcare and life sciences. I also speak and write about production ML on the platform.</p>
             </li>
             <li class="timeline__item" data-reveal>
               <h3>Amazon Web Services</h3>
               <p class="timeline__role">Machine learning</p>
-              <p>About five years designing, building, and running machine learning workloads in the cloud.</p>
+              <p>About five years designing, building, and operating machine learning workloads in the cloud.</p>
             </li>
             <li class="timeline__item" data-reveal>
               <h3>ExxonMobil</h3>
               <p class="timeline__role">Data Scientist</p>
-              <p>Where I started: applying statistics and machine learning to large-scale industrial data.</p>
+              <p>Applied statistics and machine learning to large-scale industrial data.</p>
             </li>
           </ol>
         </div>
@@ -190,12 +205,12 @@
             <article class="talk" data-reveal>
               <p class="talk__kind">Conference talk</p>
               <h3>Building and evaluating RAG applications with Snowflake Cortex Search</h3>
-              <p>A talk to a room of about 200 on building retrieval-augmented generation apps, and on how to tell whether they actually work.</p>
+              <p>A talk for an audience of about 200 on building retrieval-augmented generation applications and evaluating their quality.</p>
             </article>
             <article class="talk" data-reveal>
               <p class="talk__kind">Article</p>
               <h3>Enterprise machine learning on Snowflake</h3>
-              <p>A public technical article on running enterprise ML where the data already lives.</p>
+              <p>A technical article on running enterprise machine learning on Snowflake.</p>
             </article>
           </div>
         </div>
@@ -231,8 +246,8 @@
     <section class="contact" id="contact" aria-labelledby="contact-title">
       <div class="contact__terrain" aria-hidden="true"></div>
       <div class="wrap">
-        <h2 class="contact__title" id="contact-title" data-reveal>Let&rsquo;s talk</h2>
-        <p class="contact__lead" data-reveal>I&rsquo;m glad to talk about ML in healthcare, LLM applications that hold up in production, or data platforms. Email is the fastest way to reach me.</p>
+        <h2 class="contact__title" id="contact-title" data-reveal>Contact</h2>
+        <p class="contact__lead" data-reveal>Email is the best way to reach me. I&rsquo;m always interested in conversations about machine learning in healthcare, LLM applications, and data platforms.</p>
         <p class="contact__email" data-reveal><a href="mailto:cscaudill3@gmail.com">cscaudill3@gmail.com</a></p>
         <ul class="contact__links">
           <li><a href="https://github.com/cscaudill" rel="me">GitHub</a></li>

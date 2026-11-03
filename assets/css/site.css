@@ -31,6 +31,7 @@
   --on-accent: #1a1408;
   --deep: #0a1220;
   --on-deep: #ede6d6;
+  --deep-line: #d2a955;
 
   --font-ui: "Archivo", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-text: "Source Serif 4", ui-serif, Georgia, "Times New Roman", serif;
@@ -46,6 +47,25 @@
   --header-h: 4rem;
 
   color-scheme: dark;
+}
+
+/* Day survey: the same map in daylight. Chosen with the header toggle. */
+:root[data-theme="light"] {
+  --paper: #f5f6f8;
+  --paper-2: #e9ecf1;
+  --ink: #0f1a2a;
+  --ink-soft: #4a5568;
+  --contour: #c4a463;
+  --contour-strong: #876212;
+  --rule: #d6dbe3;
+  --accent: #1d3b66;
+  --accent-hover: #142c4f;
+  --on-accent: #ffffff;
+  --deep: #0f1a2a;
+  --on-deep: #ede6d6;
+  --deep-line: #d2a955;
+
+  color-scheme: light;
 }
 
 
@@ -98,6 +118,16 @@ a:hover { color: var(--accent-hover); text-decoration-thickness: 2px; }
   max-width: var(--wrap);
   margin-inline: auto;
   padding-inline: var(--gutter);
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
 .skip-link {
@@ -180,12 +210,12 @@ a:hover { color: var(--accent-hover); text-decoration-thickness: 2px; }
 .site-header__inner {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 1.5rem;
+  gap: 0.5rem;
   min-height: var(--header-h);
 }
 
 .wordmark {
+  margin-right: auto;
   font-family: var(--font-ui);
   font-weight: 750;
   font-stretch: 112%;
@@ -224,6 +254,27 @@ a:hover { color: var(--accent-hover); text-decoration-thickness: 2px; }
   text-underline-offset: 0.4em;
 }
 .site-nav li:last-child { margin-left: 0.5rem; }
+
+/* Theme toggle: shows the sun in the dark theme, the moon in the light one */
+.theme-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  margin-left: 0.25rem;
+  border: 1px solid var(--rule);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+}
+.js .theme-toggle { display: inline-flex; }
+.theme-toggle:hover { border-color: var(--contour-strong); color: var(--contour-strong); }
+.theme-toggle svg { width: 1.25rem; height: 1.25rem; }
+.theme-toggle__moon { display: none; }
+[data-theme="light"] .theme-toggle__sun { display: none; }
+[data-theme="light"] .theme-toggle__moon { display: block; }
 
 .menu-toggle {
   display: none;
@@ -635,7 +686,7 @@ a:hover { color: var(--accent-hover); text-decoration-thickness: 2px; }
   pointer-events: none;
 }
 .contact__terrain svg { width: 100%; height: 100%; }
-.contact__terrain path { fill: none; stroke: var(--contour-strong); stroke-width: 1.2; vector-effect: non-scaling-stroke; }
+.contact__terrain path { fill: none; stroke: var(--deep-line); stroke-width: 1.2; vector-effect: non-scaling-stroke; }
 .contact__terrain path.ix { stroke-width: 2; }
 @media (max-width: 860px) { .contact__terrain { right: -45%; width: 140vw; opacity: 0.12; } }
 
@@ -651,6 +702,12 @@ a:hover { color: var(--accent-hover); text-decoration-thickness: 2px; }
 }
 
 @media (prefers-reduced-motion: no-preference) {
+  html.theme-switching *,
+  html.theme-switching *::before,
+  html.theme-switching *::after {
+    transition: background-color 350ms ease, color 350ms ease, border-color 350ms ease, stroke 350ms ease, fill 350ms ease, box-shadow 350ms ease !important;
+  }
+
   .button, .icon-link { transition: background-color var(--dur-fast) ease, border-color var(--dur-fast) ease, color var(--dur-fast) ease, translate var(--dur-fast) var(--ease-out); }
   .button:hover { translate: 0 -2px; }
   .button:active { translate: 0 0; }
