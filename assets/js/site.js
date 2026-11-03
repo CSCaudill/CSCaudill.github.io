@@ -3,7 +3,6 @@
   root.classList.add("js");
 
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-  var finePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
 
   var header = document.querySelector(".site-header");
   var toggle = document.querySelector(".menu-toggle");
@@ -170,75 +169,11 @@
     ).observe(contact);
   }
 
-  /* ---------- Hero: the terrain tilts toward the pointer ----------
-     Each contour shifts by its elevation, so the summit (and the photo on it)
-     moves most and the map reads as a raised surface. Scrolling adds a little
-     lift too, so touch devices get depth without a pointer. */
+  /* ---------- Hero: pause the contour ripple while it's off screen ---------- */
   var summit = document.querySelector(".summit");
-  if (summit && heroMap && !reduceMotion.matches) {
-    var layers = Array.prototype.map.call(heroMap.querySelectorAll("path"), function (p) {
-      return { el: p, depth: 1 - parseFloat(p.style.getPropertyValue("--i") || "0") };
-    });
-    var photo = summit.querySelector(".summit__photo");
-    var target = { x: 0, y: 0 };
-    var pos = { x: 0, y: 0 };
-    var running = false;
-    var heroVisible = true;
-    var MAX = 26; // px of travel at the summit
-
-    function frame() {
-      var scrollLift = Math.min(window.scrollY, 600) * -0.06;
-      pos.x += (target.x - pos.x) * 0.08;
-      pos.y += (target.y + scrollLift - pos.y) * 0.08;
-
-      for (var i = 0; i < layers.length; i++) {
-        var d = layers[i].depth * layers[i].depth;
-        layers[i].el.style.translate = (pos.x * d).toFixed(2) + "px " + (pos.y * d).toFixed(2) + "px";
-      }
-      photo.style.translate = pos.x.toFixed(2) + "px " + pos.y.toFixed(2) + "px";
-
-      var settled = Math.abs(target.x - pos.x) < 0.05 && Math.abs(target.y + scrollLift - pos.y) < 0.05;
-      if (heroVisible && !settled) {
-        window.requestAnimationFrame(frame);
-      } else {
-        running = false;
-      }
-    }
-    function kick() {
-      if (!running && heroVisible) {
-        running = true;
-        window.requestAnimationFrame(frame);
-      }
-    }
-
-    if (finePointer.matches) {
-      window.addEventListener(
-        "pointermove",
-        function (e) {
-          var box = summit.getBoundingClientRect();
-          var cx = box.left + box.width / 2;
-          var cy = box.top + box.height / 2;
-          var nx = Math.max(-1, Math.min(1, (e.clientX - cx) / (window.innerWidth / 2)));
-          var ny = Math.max(-1, Math.min(1, (e.clientY - cy) / (window.innerHeight / 2)));
-          target.x = nx * MAX;
-          target.y = ny * MAX;
-          kick();
-        },
-        { passive: true }
-      );
-      document.addEventListener("pointerleave", function () {
-        target.x = 0;
-        target.y = 0;
-        kick();
-      });
-    }
-    window.addEventListener("scroll", kick, { passive: true });
-
-    if ("IntersectionObserver" in window) {
-      new IntersectionObserver(function (entries) {
-        heroVisible = entries[0].isIntersecting;
-        if (heroVisible) kick();
-      }).observe(summit);
-    }
+  if (summit && "IntersectionObserver" in window) {
+    new IntersectionObserver(function (entries) {
+      summit.classList.toggle("is-offscreen", !entries[0].isIntersecting);
+    }).observe(summit);
   }
 })();
