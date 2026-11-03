@@ -19,6 +19,7 @@ Plain HTML, CSS, and a few lines of JavaScript. No build step and no dependencie
 - **Add a project:** copy one `<article class="project">` block under Selected work.
 - **Add a link (LinkedIn, résumé PDF):** add an `<li>` to `.contact__links`, and add the URL to `sameAs` in the JSON-LD block in `<head>`.
 - **Contour map in the hero:** inline SVG generated from a synthetic terrain. Line colors come from `--contour` and `--contour-strong` in the CSS.
+- **Motion:** add `data-reveal` to any element to have it fade up when scrolled into view. Timing tokens (`--dur-*`, `--ease-*`) are in the Motion block of `site.css`. Everything respects the reduced-motion setting, and content stays visible if JavaScript is off.
 
 ## Preview locally
 
